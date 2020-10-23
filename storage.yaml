@@ -1,0 +1,26 @@
+# What we want to implement
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mong-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+# How we want to implement
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-storage
+spec:
+  capacity:
+    # Allocate 20GB in the directory structure below
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/some new/directory/structure/"
+    type: DirectoryOrCreate
