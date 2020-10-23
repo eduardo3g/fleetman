@@ -2,8 +2,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mong-pvc
+  name: mongo-pvc
 spec:
+  storageClassName: mylocalstorage
   accessModes:
     - ReadWriteOnce
   resources:
@@ -16,6 +17,7 @@ kind: PersistentVolume
 metadata:
   name: local-storage
 spec:
+  storageClassName: mylocalstorage
   capacity:
     # Allocate 20GB in the directory structure below
     storage: 20Gi
